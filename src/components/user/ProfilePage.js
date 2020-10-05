@@ -7,7 +7,15 @@ const ProfilePage = () => {
   const user = useContext(UserContext);
   //const user = auth.currentUser;
 
-  const { displayName, email, title, employer, fullname } = user;
+  const {
+    displayName,
+    email,
+    title,
+    employer,
+    fullname,
+    town,
+    websiteUrl,
+  } = user;
 
   //   useEffect(() => {
   //     if (auth.currentUser != user) {
@@ -20,6 +28,8 @@ const ProfilePage = () => {
   const [jobTitle, setJobTitle] = useState(title || "Developer");
   const [company, setCompany] = useState(employer || "EBSCO-IS");
 
+  const [location, setLocation] = useState(town || "Ipswich, MA");
+  const [website, setWebsite] = useState(websiteUrl);
   const [error, setError] = useState(null);
 
   const updateProfileHandler = async (event) => {
@@ -32,6 +42,8 @@ const ProfilePage = () => {
         title: jobTitle,
         fullname: name,
         employer: company,
+        town: location,
+        websiteUrl: website,
       }).then(() => {
         console.log(
           "success update",
@@ -63,6 +75,12 @@ const ProfilePage = () => {
         break;
       case "company":
         setCompany(value);
+        break;
+      case "location":
+        setLocation(value);
+        break;
+      case "website":
+        setWebsite(value);
         break;
       default:
         break;
@@ -285,7 +303,9 @@ const ProfilePage = () => {
                     />
                   </div>
                 </div>
-                {/* <div class="input-field field">
+              </div>
+              <div class="account-field">
+                <div class="input-field field">
                   <label class="">Location</label>
                   <div>
                     <input
@@ -298,14 +318,12 @@ const ProfilePage = () => {
                     />
                   </div>
                 </div>
-              </div>
 
-             
                 <div class="input-field field">
                   <label class="">Personal website</label>
                   <div>
                     <input
-                      name="websiteUrl"
+                      name="website"
                       placeholder="http://website.com"
                       type="url"
                       value={website}
@@ -314,6 +332,7 @@ const ProfilePage = () => {
                   </div>
                 </div>
               </div>
+
               <div>
                 <div class="textarea-field undefined">
                   <label class="">Short bio</label>
@@ -324,8 +343,8 @@ const ProfilePage = () => {
                     ></textarea>
                   </div>
                 </div>
-              </div> */}
               </div>
+
               <button
                 data-css-867vqf=""
                 class="saveButton"
@@ -340,7 +359,7 @@ const ProfilePage = () => {
           </section>
         </div>
       </div>
-      <div class="stats">
+      {/* <div class="stats">
         <div>
           <h2 data-css-xhd98s="">Activity insights</h2>
           <button
@@ -368,6 +387,7 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
+   */}
     </div>
     // <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
     //   <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">

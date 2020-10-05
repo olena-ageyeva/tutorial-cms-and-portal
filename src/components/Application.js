@@ -53,7 +53,7 @@ function Application() {
         </Navbar.Collapse>
       </Navbar>
 
-      <div className="container mt-3">
+      <div>
         {/* <Router>
           <TutorialsList path="/" />
           <TutorialsList path="/tutorials" />

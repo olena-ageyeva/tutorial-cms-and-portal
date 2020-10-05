@@ -1,3 +1,11 @@
+//TODO
+
+1. Breadcrams - chefron and links
+2. Revisit styling
+3. Code refactoring
+4. Data structuring
+5. Rendering???
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

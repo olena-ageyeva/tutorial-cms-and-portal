@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+}
 .container h2 {
   text-align: center;
   margin: 25px auto;
@@ -233,6 +243,7 @@ div#edit {
   width: 100%;
   justify-content: center;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 #edit .profile-form form .account-field {
@@ -387,7 +398,137 @@ body[ready] #gc-wrapper {
 }
 
 section#tutorial-content {
-  width: 70%;
-  padding: 1rem;
+  width: 99%;
+  padding: 1% 0 0 1%;
   float: left;
+}
+.devsite-tutorial-nav li {
+  line-height: 16px;
+  margin: 0;
+  border-bottom: 1px solid #dadce0;
+  padding: 11px 0 11px 22px;
+}
+
+.devsite-tutorial-nav h4 {
+  padding-left: 24px;
+}
+
+.devsite-tutorial-nav li:active,
+.list-group-item.active {
+  border-radius: 0 12px 12px 0;
+  background: var(--devsite-nav-title-background-active, 0);
+}
+
+.devsite-breadcrumb-guillemet {
+  color: #5f6368;
+  font-size: 18px;
+  margin: 0 4px;
+  width: 18px;
+}
+
+.devsite-breadcrumb-guillemet:before {
+  content: "chevron_right";
+}
+
+ul.devsite-breadcrumb-list {
+  display: inline-flex;
+}
+
+a.devsite-breadcrumb-link.gc-analytics-event {
+  color: #5f6368;
+  text-decoration: none;
+}
+
+/* .star:focus:before,
+.star:before {
+  color: #5f6368;
+  content: "star_border";
+} */
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.devsite-article-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.star {
+  color: #d56e0c;
+}
+
+.feedback {
+  border: var(--devsite-button-border, 0);
+
+  border-radius: 2px;
+
+  box-shadow: var(
+    --devsite-button-box-shadow,
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15)
+  );
+
+  font: var(
+    --devsite-button-font,
+    500 14px/36px Roboto,
+    Noto Sans,
+    Noto Sans JP,
+    Noto Sans KR,
+    Noto Naskh Arabic,
+    Noto Sans Thai,
+    Noto Sans Hebrew,
+    Noto Sans Bengali,
+    sans-serif
+  );
+  line-height: 36px;
+  line-height: var(--devsite-button-line-height, 36px);
+  padding: 0 16px;
+  padding: var(--devsite-button-padding, 0 16px);
+
+  background: #fff;
+
+  box-sizing: border-box;
+  color: #1a73e8;
+  cursor: pointer;
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  min-width: 36px;
+  outline: 0;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+
+  transition: background-color 0.2s, border 0.2s, box-shadow 0.2s;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.feedback:hover {
+  background: var(--devsite-button-background-hover, #e4eefc);
+
+  border: var(--devsite-button-border-hover, 0);
 }

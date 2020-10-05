@@ -7,10 +7,7 @@ const getAll = () => {
   return db;
 };
 
-const create = ({ data, source }) => {
-  if (source === "user") {
-    user.push(data);
-  }
+const create = (data ) => {
   return db.push(data);
 };
 
