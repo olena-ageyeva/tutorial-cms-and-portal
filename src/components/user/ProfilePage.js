@@ -15,6 +15,7 @@ const ProfilePage = () => {
     fullname,
     town,
     websiteUrl,
+    userBio,
   } = user;
 
   //   useEffect(() => {
@@ -25,32 +26,34 @@ const ProfilePage = () => {
 
   const [name, setName] = useState(fullname);
   const [nickname, setNickName] = useState(displayName);
-  const [jobTitle, setJobTitle] = useState(title || "Developer");
-  const [company, setCompany] = useState(employer || "EBSCO-IS");
+  const [jobTitle, setJobTitle] = useState(title || null);
+  const [company, setCompany] = useState(employer || null);
 
-  const [location, setLocation] = useState(town || "Ipswich, MA");
-  const [website, setWebsite] = useState(websiteUrl);
+  const [location, setLocation] = useState(town || null);
+  const [website, setWebsite] = useState(websiteUrl || null);
+  const [bio, setBio] = useState(userBio || null);
   const [error, setError] = useState(null);
 
   const updateProfileHandler = async (event) => {
     event.preventDefault();
     try {
-      var currentUser = firebase.auth().currentUser;
+      //var currentUser = auth.currentUser;
 
-      var updatedUser = await generateUserDocument(currentUser, {
+      var updatedUser = await generateUserDocument(user, {
         displayName: nickname,
         title: jobTitle,
         fullname: name,
         employer: company,
         town: location,
         websiteUrl: website,
+        userBio: bio,
       }).then(() => {
         console.log(
           "success update",
-          auth.currentUser,
+          user,
+          fullname,
           displayName,
           jobTitle,
-          name,
           company
         );
       });
@@ -81,6 +84,9 @@ const ProfilePage = () => {
         break;
       case "website":
         setWebsite(value);
+        break;
+      case "bio":
+        setBio(value);
         break;
       default:
         break;
@@ -335,10 +341,12 @@ const ProfilePage = () => {
 
               <div>
                 <div class="textarea-field undefined">
-                  <label class="">Short bio</label>
+                  <label>Short bio</label>
                   <div>
                     <textarea
-                      name="shortBio"
+                      name="bio"
+                      value={bio}
+                      onChange={(event) => onChangeHandler(event)}
                       placeholder="Help us introduce you to members. Share a brief introduction with your goals and interests."
                     ></textarea>
                   </div>

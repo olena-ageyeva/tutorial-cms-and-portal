@@ -22,11 +22,18 @@ export const signInWithGoogle = () => {
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
 
+  console.log("generateDoc", user, additionalData);
+
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
+
+  //   console.log("generateDoc", user, additionalData, snapshot, userRef);
+
   //console.log("generate doc", user.uid, snapshot.exists);
   if (!snapshot.exists || additionalData) {
     const { email, displayName, photoURL } = user;
+
+    console.log("generateDoc", user, additionalData, snapshot, userRef);
     try {
       await userRef.set({
         displayName,

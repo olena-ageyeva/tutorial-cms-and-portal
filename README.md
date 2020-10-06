@@ -6,6 +6,9 @@
 4. Data structuring
 5. Rendering???
 
+//To see live
+https://tutorial-cms-and-portal.herokuapp.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
