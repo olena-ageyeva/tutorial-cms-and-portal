@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase";
 import { auth } from "../../firebase";
 import { UserContext } from "../providers/UserProvider";
@@ -8,8 +8,6 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
-  //const user = useContext(UserContext);
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
@@ -77,13 +75,23 @@ const SignIn = () => {
             Sign in
           </button>
         </form>
+
         <p className="text-center my-3">or</p>
-        <button className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
-          Sign in with Google
+        <button
+          onClick={() => {
+            try {
+              signInWithGoogle();
+            } catch (error) {
+              console.error("Error signing in with Google", error);
+            }
+          }}
+          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
+        >
+          Sign In with Google
         </button>
         <p className="text-center my-3">
           Don't have an account?{" "}
-          <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+          <Link to="/signUp" className="text-blue-500 hover:text-blue-600">
             Sign up here
           </Link>{" "}
           <br />{" "}
