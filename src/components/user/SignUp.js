@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
-import { auth } from "../../firebase";
+import { Link } from "react-router-dom";
+import { auth, generateUserDocument } from "../../firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -18,9 +18,8 @@ const SignUp = () => {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
         password
-      );
-      user.updateProfile({ displayName });
-      //generateUserDocument(user, { displayName });
+      );     
+      generateUserDocument(user, { displayName });
     } catch (error) {
       setError("Error Signing up with email and password");
     }
