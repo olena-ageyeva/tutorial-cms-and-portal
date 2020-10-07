@@ -1,0 +1,85 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+.frame {
+  position: relative;
+  display: inherit;
+}
+
+.icon {
+  z-index: 2;
+  top: 20px;
+  left: 30px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  fill: none;
+  stroke-width: 2px;
+  stroke: #212529;
+  stroke-linecap: square;
+  stroke-dasharray: 325 325;
+  margin-right: 2rem;
+}
+
+.icon.plane {
+  width: 40px;
+  height: 30px;
+  stroke-dashoffset: 325;
+}
+
+#cb {
+  display: none;
+}
+
+#cb:checked ~ .plane {
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s ease-in-out 0.6s;
+  transition: stroke-dashoffset 1s ease-in-out 0.6s;
+  -webkit-animation: fly 2.4s ease-in-out;
+  animation: fly 2.4s ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fly {
+  0%,
+  50% {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  60% {
+    -webkit-transform: translate3d(-10px, 5px, 0) scale(1.05);
+    transform: translate3d(-10px, 5px, 0) scale(1.05);
+  }
+  70% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate3d(300px, -150px, 0) scale(0.4);
+    transform: translate3d(300px, -150px, 0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes fly {
+  0%,
+  50% {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  60% {
+    -webkit-transform: translate3d(-10px, 5px, 0) scale(1.05);
+    transform: translate3d(-10px, 5px, 0) scale(1.05);
+  }
+  70% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate3d(300px, -150px, 0) scale(0.4);
+    transform: translate3d(300px, -150px, 0) scale(0.4);
+    opacity: 0;
+  }
+}

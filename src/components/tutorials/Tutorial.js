@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TutorialDataService from "../../services/TutorialService";
 import { Editor, EditorTools, EditorUtils } from "@progress/kendo-react-editor";
 import MaterialIcon, { colorPalette } from "material-icons-react";
-import { Checkbox } from "@progress/kendo-react-inputs";
+import SendMailIcon from "../send-mail/send-mail";
 
 const {
   Bold,
@@ -203,27 +203,11 @@ const Tutorial = ({ tutorial, refreshList, admin }) => {
                 {" "}
                 {rating < 5 ? "star_border" : "star"}
               </span>
-
-              {/* <div class="star" data-rating-val="1" role="button">
-                <i class="material-icons">star_border</i>
-                <i class="material-icons">star_border</i>
-                <span class="material-icons">star_border</span>
-                <MaterialIcon icon="star_border" />
-              </div>
-              <div class="material-icons" data-rating-val="1" role="button">
-                <i class="material-icons">star_border</i>
-              </div>
-              <div class="star" data-rating-val="1" role="button">
-                <i class="material-icons">star_border</i>
-              </div>
-              <div class="star" data-rating-val="1" role="button">
-                <i class="material-icons">star_border</i>
-              </div> */}
             </div>
           </div>
           <div class="devsite-article-meta">
             <h2>{currentTutorial.title}</h2>
-            <button class="feedback">Send feedback</button>
+            <SendMailIcon />
           </div>
 
           <Editor
