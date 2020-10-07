@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../../firebase";
-import { auth } from "../../firebase";
-import { UserContext } from "../providers/UserProvider";
+import { auth, signInWithGoogle } from "../../firebase";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");

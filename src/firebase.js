@@ -15,8 +15,9 @@ let config = {
 firebase.initializeApp(config);
 
 const provider = new firebase.auth.GoogleAuthProvider();
+
 export const signInWithGoogle = () => {
-  auth.signInWithPopup(provider);
+  firebase.auth().signInWithPopup(provider);
 };
 
 export const generateUserDocument = async (user, additionalData) => {
@@ -27,9 +28,6 @@ export const generateUserDocument = async (user, additionalData) => {
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
 
-  //   console.log("generateDoc", user, additionalData, snapshot, userRef);
-
-  //console.log("generate doc", user.uid, snapshot.exists);
   if (!snapshot.exists || additionalData) {
     const { email, displayName, photoURL } = user;
 
