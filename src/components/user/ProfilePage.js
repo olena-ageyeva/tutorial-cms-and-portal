@@ -88,7 +88,7 @@ const ProfilePage = () => {
 
   return (
     <div class="profile">
-      <HeaderBar name={fullname || nickname || "Anonimous"} />
+      <HeaderBar name={fullname || nickname || "Anonymous"} />
       <HeaderContent />
 
       <div id="edit">
