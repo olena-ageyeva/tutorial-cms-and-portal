@@ -1,13 +1,12 @@
 import firebase from "../firebase";
 
 const db = firebase.database().ref("/tutorials");
-const user = firebase.database().ref("/users");
 
 const getAll = () => {
   return db;
 };
 
-const create = (data ) => {
+const create = (data) => {
   return db.push(data);
 };
 

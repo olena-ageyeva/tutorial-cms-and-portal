@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Router } from "@reach/router";
+import React, { useContext } from "react";
+
 import SignIn from "./user/SignIn";
 import SignUp from "./user/SignUp";
 

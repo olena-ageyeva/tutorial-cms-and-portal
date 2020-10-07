@@ -10,7 +10,6 @@ const ProfilePage = () => {
 
   const {
     displayName,
-    email,
     title,
     employer,
     fullname,
@@ -27,12 +26,12 @@ const ProfilePage = () => {
   const [location, setLocation] = useState(town || null);
   const [website, setWebsite] = useState(websiteUrl || null);
   const [bio, setBio] = useState(userBio || null);
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
   const updateProfileHandler = async (event) => {
     event.preventDefault();
     try {
-      const updatedUser = await generateUserDocument(user, {
+      await generateUserDocument(user, {
         displayName: nickname,
         title: jobTitle,
         fullname: name,
