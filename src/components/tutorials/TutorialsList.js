@@ -3,7 +3,7 @@ import { useList } from "react-firebase-hooks/database";
 import TutorialDataService from "../../services/TutorialService";
 import Tutorial from "./Tutorial";
 import { UserContext } from "../providers/UserProvider";
-// import { Editor, EditorTools, EditorUtils } from "@progress/kendo-react-editor";
+
 
 const TutorialsList = () => {
   const [currentTutorial, setCurrentTutorial] = useState(null);

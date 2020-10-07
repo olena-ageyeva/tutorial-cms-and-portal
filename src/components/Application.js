@@ -7,28 +7,18 @@ import ProfilePage from "./user/ProfilePage";
 import { UserContext } from "./providers/UserProvider";
 import PasswordReset from "./user/PasswordReset";
 
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AddTutorial from "./tutorials/AddTutorial";
 import TutorialsList from "./tutorials/TutorialsList";
-import { auth, generateUserDocument } from "../firebase";
-import AddUser from "./user/add-user";
-//import useAuth from "./components/user/use-auth";
+import { auth } from "../firebase";
 
 function Application() {
-  // const [user, setUser] = useState(null);
-
   const user = useContext(UserContext);
 
-  //   user &&
-  //     auth.currentUser.updateProfile({ displayName: "hello", photoURL: "test" });
-
-  console.log("user application", user);
-
   return user ? (
-    // <ProfilePage />
     <div>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/tutorials">EBSCO-Onboarding</Navbar.Brand>
@@ -38,29 +28,20 @@ function Application() {
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="/user">{user.email}</a>
+            Signed in as: <a href="/user">{user.displayName}</a>
             {"   "}
-            <Link to="/">
-              <button
-                onClick={() => {
-                  auth.signOut();
-                }}
-              >
-                Sign out
-              </button>
-            </Link>
+            <button
+              onClick={() => {
+                auth.signOut();
+              }}
+            >
+              <Link to="/">Sign out</Link>
+            </button>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
 
       <div>
-        {/* <Router>
-          <TutorialsList path="/" />
-          <TutorialsList path="/tutorials" />
-          <AddTutorial path="/add" />
-          <ProfilePage path="/user" />
-          <TutorialsList default />
-        </Router> */}
         <Switch>
           <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
           <Route exact path="/add" component={AddTutorial} />
