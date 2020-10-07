@@ -51,7 +51,7 @@ const ProfilePage = () => {
       });
     } catch (error) {
       console.log("error", error);
-      setError("Error");
+      //setError(error);
     }
   };
 
