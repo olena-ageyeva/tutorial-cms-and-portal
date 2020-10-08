@@ -4,7 +4,6 @@ import TutorialDataService from "../../services/TutorialService";
 import Tutorial from "./Tutorial";
 import { UserContext } from "../providers/UserProvider";
 
-
 const TutorialsList = () => {
   const [currentTutorial, setCurrentTutorial] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -75,7 +74,10 @@ const TutorialsList = () => {
           </button>
         )}
       </div>
-      <section id="tutorial-content">
+      <section
+        id="tutorial-content"
+        key={currentTutorial && currentTutorial.key}
+      >
         <main
           role="main"
           class="devsite-main-content"
