@@ -7,6 +7,7 @@
 5. Rendering???
 
 //To see live
+https://tutorial-cms.netlify.app/
 https://tutorial-cms-and-portal.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
