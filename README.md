@@ -5,6 +5,7 @@
 3. Code refactoring
 4. Data structuring
 5. Rendering???
+6. Add loader
 
 //To see live
 https://tutorial-cms.netlify.app/
