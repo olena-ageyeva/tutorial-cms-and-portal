@@ -75,6 +75,8 @@ const EditTutorial = () => {
   return (
     <div className="edit-form">
       <h4>Tutorial</h4>
+      {error && <strong>Error: {error}</strong>}
+      {loading && <span>Loading...</span>}
       <Dropdown>
         <Dropdown.Toggle id="dropdown-basic">Select a Tutorial</Dropdown.Toggle>
         <Dropdown.Menu>

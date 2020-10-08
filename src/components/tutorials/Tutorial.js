@@ -50,7 +50,7 @@ const {
 
 const Tutorial = ({ tutorial, admin }) => {
   const [currentTutorial, setCurrentTutorial] = useState(tutorial);
-  const [message, setMessage] = useState("");
+  //const [message, setMessage] = useState("");
   const [rating, setRating] = useState(0);
   let editor = null;
   let textarea = null;
