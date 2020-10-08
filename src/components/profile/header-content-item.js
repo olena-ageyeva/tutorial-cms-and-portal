@@ -4,7 +4,7 @@ const HeaderContentItem = ({ title, info, hidden, togglePrivacy }) => {
   return (
     <li>
       <strong>{info}</strong>{" "}
-      <a href="/profile/interests?returnUrl=/profile" data-css-di03rb>
+      <a href="#" data-css-di03rb>
         {title}
       </a>
       <button
