@@ -12,6 +12,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AddTutorial from "./tutorials/AddTutorial";
+import EditTutorial from "./tutorials/EditTutorial";
 import TutorialsList from "./tutorials/TutorialsList";
 import { auth } from "../firebase";
 
@@ -25,6 +26,7 @@ function Application() {
         <Nav className="mr-auto">
           <Nav.Link href="/tutorials">Tutorials</Nav.Link>
           <Nav.Link href="/add">Add</Nav.Link>
+          <Nav.Link href="/edit">Edit</Nav.Link>
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
@@ -45,6 +47,7 @@ function Application() {
         <Switch>
           <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
           <Route exact path="/add" component={AddTutorial} />
+          <Route exact path="/edit" component={EditTutorial} />
           <Route exact path="/user" component={ProfilePage} />
         </Switch>
       </div>
