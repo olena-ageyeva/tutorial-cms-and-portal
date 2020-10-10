@@ -3,6 +3,7 @@ import { useList } from "react-firebase-hooks/database";
 import TutorialDataService from "../../services/TutorialService";
 import Tutorial from "./Tutorial";
 import { UserContext } from "../providers/UserProvider";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
 const TutorialsList = () => {
   const [currentTutorial, setCurrentTutorial] = useState(null);
@@ -50,6 +51,7 @@ const TutorialsList = () => {
         <h4>Table of Contents</h4>
         {error && <strong>Error: {error}</strong>}
         {loading && <span>Loading...</span>}
+        <MaterialIcon icon="star_border" color={colorPalette.amber._200} />
         <ul className="list-group">
           {!loading &&
             tutorials &&
@@ -61,9 +63,15 @@ const TutorialsList = () => {
                 onClick={() => setActiveTutorial(tutorial, index)}
                 key={index}
               >
-                {tutorial.val().title}
+                <span>{tutorial.val().title}</span>
+
+                <button class={`material-icons`}>add_circle_outline</button>
               </li>
             ))}
+          <li>
+            {" "}
+            <button class={`material-icons`}>add_circle_outline</button>
+          </li>
         </ul>
         {admin && (
           <button

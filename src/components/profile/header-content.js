@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HeaderContentItem from "./header-content-item";
 
-const HeaderContent = () => {
+const HeaderContent = ({ onClick }) => {
   const [interestToggle, setInterestToggle] = useState(true);
   const [profileToggle, setProfileToggle] = useState(true);
   const [knowledgeToggle, setKnowledgeToggle] = useState(true);
@@ -18,24 +18,28 @@ const HeaderContent = () => {
             title="Interest"
             hidden={interestToggle}
             togglePrivacy={() => setInterestToggle(!interestToggle)}
+            onClick={() => onClick("interests")}
           />
           <HeaderContentItem
             info={0}
             title="Knowledge areas"
             hidden={knowledgeToggle}
             togglePrivacy={() => setKnowledgeToggle(!knowledgeToggle)}
+            onClick={() => onClick("knowledge")}
           />
           <HeaderContentItem
             info={"5/10"}
             title="Activity Insight"
             hidden={statToggle}
             togglePrivacy={() => setStatToggle(!statToggle)}
+            onClick={() => onClick("activity")}
           />
           <HeaderContentItem
             info="80%"
             title="Profile Info"
             hidden={profileToggle}
             togglePrivacy={() => setProfileToggle(!profileToggle)}
+            onClick={() => onClick("personal")}
           />
         </ul>
       </div>

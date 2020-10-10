@@ -1,10 +1,10 @@
 import React from "react";
 
-const HeaderContentItem = ({ title, info, hidden, togglePrivacy }) => {
+const HeaderContentItem = ({ title, info, hidden, togglePrivacy, onClick }) => {
   return (
     <li>
       <strong>{info}</strong>{" "}
-      <a href="#profile" data-css-di03rb>
+      <a href="#profile" data-css-di03rb onClick={onClick}>
         {title}
       </a>
       <button

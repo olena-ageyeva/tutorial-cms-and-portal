@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import SignIn from "./user/SignIn";
 import SignUp from "./user/SignUp";
 
-import ProfilePage from "./user/ProfilePage";
+import ProfilePage from "./profile/ProfilePage";
 import { UserContext } from "./providers/UserProvider";
 import PasswordReset from "./user/PasswordReset";
 

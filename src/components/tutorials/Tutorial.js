@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-
+import TutorialDataService from "../../services/TutorialService";
 import { Editor, EditorTools, EditorUtils } from "@progress/kendo-react-editor";
 import MaterialIcon, { colorPalette } from "material-icons-react";
 import SendMailIcon from "../send-mail/send-mail";
-import EditTutorial from "./EditTutorial";
 
 const {
   Bold,
@@ -48,9 +47,16 @@ const {
   SplitCell,
 } = EditorTools;
 
-const Tutorial = ({ tutorial, admin }) => {
-  const [currentTutorial, setCurrentTutorial] = useState(tutorial);
-  //const [message, setMessage] = useState("");
+const Tutorial = ({ tutorial, refreshList, admin }) => {
+  const initialTutorialState = {
+    key: null,
+    title: "",
+    description: "",
+    content: "",
+    published: false,
+  };
+  const [currentTutorial, setCurrentTutorial] = useState(initialTutorialState);
+  const [message, setMessage] = useState("");
   const [rating, setRating] = useState(0);
   let editor = null;
   let textarea = null;
@@ -64,6 +70,54 @@ const Tutorial = ({ tutorial, admin }) => {
   const setHtml = () => {
     const view = editor.view;
     EditorUtils.setHtml(view, textarea.value);
+  };
+
+  if (currentTutorial.key !== tutorial.key) {
+    setCurrentTutorial(tutorial);
+    setMessage("");
+  }
+
+  const handleInputChange = (event) => {
+    console.log("event", event);
+    const { name, value } = event.target;
+    setCurrentTutorial({ ...currentTutorial, [name]: value });
+  };
+
+  const updatePublished = (status) => {
+    TutorialDataService.update(currentTutorial.key, { published: status })
+      .then(() => {
+        setCurrentTutorial({ ...currentTutorial, published: status });
+        setMessage("The status was updated successfully!");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const updateTutorial = () => {
+    const data = {
+      title: currentTutorial.title,
+      description: currentTutorial.description,
+      content: currentTutorial.content,
+    };
+
+    TutorialDataService.update(currentTutorial.key, data)
+      .then(() => {
+        setMessage("The tutorial was updated successfully!");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const deleteTutorial = () => {
+    TutorialDataService.remove(currentTutorial.key)
+      .then(() => {
+        refreshList();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (
@@ -211,10 +265,83 @@ const Tutorial = ({ tutorial, admin }) => {
             ref={(node) => (textarea = node)}
           />
 
-          <EditTutorial
-            currentTutorial={currentTutorial}
-            setCurrentTutorial={setCurrentTutorial}
-          />
+          <div className="edit-form">
+            <h4>Tutorial</h4>
+            <form>
+              <div className="form-group">
+                <label htmlFor="title">Title</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="title"
+                  name="title"
+                  value={currentTutorial.title}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  value={currentTutorial.description}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="content">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="content"
+                  name="content"
+                  value={currentTutorial.content}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>
+                  <strong>Status:</strong>
+                </label>
+                {currentTutorial.published ? "Published" : "Pending"}
+              </div>
+            </form>
+
+            {currentTutorial.published ? (
+              <button
+                className="badge badge-primary mr-2"
+                onClick={() => updatePublished(false)}
+              >
+                UnPublish
+              </button>
+            ) : (
+              <button
+                className="badge badge-primary mr-2"
+                onClick={() => updatePublished(true)}
+              >
+                Publish
+              </button>
+            )}
+
+            <button
+              className="badge badge-danger mr-2"
+              onClick={deleteTutorial}
+            >
+              Delete
+            </button>
+
+            <button
+              type="submit"
+              className="badge badge-success"
+              onClick={updateTutorial}
+            >
+              Update
+            </button>
+            <p>{message}</p>
+          </div>
         </>
       ) : (
         <div>
